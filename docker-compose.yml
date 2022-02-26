@@ -6,6 +6,8 @@ services:
       - 3000:3000
     volumes:
       - grafana-storage:/var/lib/grafana
+    labels:
+      - "traefik.enable=false"
 
   loki:
     image: grafana/loki
@@ -14,6 +16,8 @@ services:
     command: -config.file=/etc/loki/local-config.yaml
     volumes:
       - loki-storage:/var/lib/loki
+    labels:
+      - "traefik.enable=false"
 
 volumes:
   grafana-storage:
